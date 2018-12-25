@@ -1,0 +1,573 @@
+/*non grid supporting browsers get flex fallback*/
+
+
+html { 
+	
+-webkit-text-size-adjust: 100%; 
+background-color: #cecece; 
+color: black;
+box-sizing: border-box;	
+font-family: 'Tajawal', sans-serif;
+
+  }  
+
+*, *:before, *:after {box-sizing: inherit; }
+* {margin: 0; padding: 0;} 
+
+body { 
+	margin: 0 auto 0 auto;
+	padding: 0 0 5vw 0;
+    max-width: 1000px;
+}
+
+section, article, nav, aside, header, footer, main { display: block;  }
+
+
+
+h1 {
+	text-align: center;
+	margin: 40px 0 45px 0;
+}
+
+h1, h2 {
+	font-weight: normal;
+}
+
+h2#heading--fruits, h2#heading--whole-grains {
+	color: #d4d4d4;
+}
+
+#content__container {
+	
+	display: flex;
+	flex-direction: column;
+	padding-right: auto; 
+	padding-left: auto;
+}
+
+#content__plate--inner-container {
+
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-content: space-between;
+	width: 400px;
+	height: 400px;
+	margin: 0 auto 50px auto;
+	overflow: hidden;   /*so the content are also restricted by border-radius*/
+	border-radius: 50%; 	
+}
+
+#box--veggies {
+	margin-top: 50px;
+}
+
+
+#heading--vegetables {
+	background-color: #3AB54A;
+	width: 200px;
+	height: 250px;
+	padding: 140px 0 0 55px;
+	
+}
+
+#heading--whole-grains {
+	
+	background-color: #a68461;
+	width: 200px;
+	height: 200px;
+	padding: 75px 0 0 40px;
+	
+}
+
+#heading--fruits {
+	
+	background-color: #b50a37;
+	width: 200px;
+	height: 200px;
+	padding: 40px 0 0 100px;
+	
+}
+
+#heading--protein {
+	
+	background-color: #e87d1d;
+	width: 200px;
+	height: 200px;
+	margin-top: -50px; 
+	padding: 40px 0 0 40px;
+}
+
+
+
+p {
+	
+	font-size: 20px;
+	margin: 0 auto 5% auto;
+	padding: 0 10px;
+	width: 250px;
+}
+
+#box--healthy-oils p {
+	
+	border-right: 5px solid #E0CC47;
+	border-left: 5px solid #E0CC47;
+}
+
+#box--drinking-water p {
+	
+	border-right: 5px solid #3B6A9B;
+	border-left: 5px solid #3B6A9B; 
+}
+
+#box--veggies p {
+	
+	border-right: 5px solid #3AB54A;
+	border-left: 5px solid #3AB54A;
+	
+}
+
+#box--whole-grains p {
+	
+	border-right: 5px solid #a68461;
+	border-left: 5px solid #a68461;
+}
+
+#box--fruits p {
+	
+	border-right: 5px solid #b50a37;
+	border-left: 5px solid #b50a37;
+}
+
+#box--protein p {
+	
+	border-left: 5px solid #e87d1d; 
+	border-right: 5px solid #e87d1d;
+	
+}
+
+footer {
+	font-size: small;width: 200px;
+	margin: 0 auto 0 auto;
+}
+
+
+/*non-grid media query for browsers with smaller viewports that don't support grid. */
+
+
+@media screen and (max-width: 800px) {
+
+#content__plate--inner-container {
+	
+	width: 200px;
+	height: 200px;
+	
+}
+
+h2 {   font-size: 17px   }
+	
+#box--veggies {
+	margin-top: 50px;
+}
+
+
+#heading--vegetables {
+	width: 100px;
+	height: 125px;
+	padding: 80px 0 0 15px;
+	
+}
+
+#heading--whole-grains {
+	width: 100px;
+	height: 100px;
+	padding: 40px 0 0 5px;
+	
+}
+
+#heading--fruits {
+	width: 100px;
+	height: 100px;
+	padding: 5px 0 0 45px;
+	
+}
+
+#heading--protein {
+	width: 100px;
+	height: 100px;
+	margin-top: -25px; /*allows "self" to enter the first line*/
+	padding: 20px 0 0 10px;
+}
+
+}
+
+
+/*end of fallback: next up; grid support */
+
+
+
+
+/*---------------------------------------GRID SUPPORT BELOW----------------------------*/
+
+
+
+
+
+
+
+@supports (display: grid) {
+	
+
+body { 
+
+max-width: 1976px;
+
+}
+
+
+
+h1 {
+	grid-row: 1 / 2 ;
+	grid-column: 1 / -1;
+	align-self: center;
+	font-size: 1.75em;
+	letter-spacing: 1px;
+	
+}
+
+#content__container {
+	display: grid;
+	grid-template-rows: repeat(8, 100px);
+	grid-template-columns: 1fr auto 1fr;
+	grid-gap: 18px;
+	width: 90%;
+	margin: 2% auto 0 5%;	
+	
+}
+
+#content__plate--inner-container {
+	
+	display: grid;
+	grid-template-rows: 395px 70px 277px;
+	grid-template-columns: 395px 395px;
+	grid-gap: inherit;  /*18px from outer grid*/
+	align-self: start;
+	grid-template-areas:
+		
+	"vegetables whole-grains"
+	"vegetables protein"
+    "fruits protein";
+	
+	margin-bottom: 8%;
+	width: auto; height: auto;
+	background-color: transparent;
+	align-content: flex-start;
+	
+}
+
+	
+p {
+	
+	font-size: 21px;
+	margin-bottom: 30px;
+	padding: 0 10px;
+	width: auto;
+	
+	
+}
+	
+	/*flex got the side borders on the paragraph, and grid got it on the outer div (box). The following removes a second border for grid*/
+	#box--healthy-oils p, #box--drinking-water p, #box--veggies p, #box--whole-grains p, #box--fruits p, #box--fruits p, #box--protein p { 
+	
+	border-right: none;
+	border-left: none;
+}
+
+
+/*headings or food catagories displayed in each slice of plate*/
+
+h2 {                       /*text on sections of plate*/
+
+	font-size: 30px;
+
+}
+
+
+#heading--vegetables {
+	grid-row: 1 / 3;
+	grid-column: 1 /2;
+	justify-self: end;
+	align-self: end;          
+	
+}
+
+#heading--whole-grains {
+	grid-row: 1 / 2;
+	grid-column: 2 /3;
+	justify-self: start;  /*this allows for grid gap*/
+	align-self: end;	
+	padding: 10 0 3vw 1vw;
+}
+
+#heading--fruits {
+	
+	grid-row: 3 /4;
+	grid-column: 1 /2;
+	justify-self: end;
+	align-self: start;
+	padding-right: 25px;
+	padding-top: 20px;
+
+}
+
+#heading--protein {
+	
+	grid-row: 2 /4;
+	grid-column: 2 /3;
+	justify-self: start;
+	align-self: start;
+	margin-top: 0;
+}
+
+	/*The 4 plate sections: whole grain, fruit, protein, and vegetables*/
+
+
+#plate__vegetables {
+	
+	grid-area: vegetables;
+	background-color: #3AB54A;
+	height: 100%;  /*why does vegetable need a height?*/
+	align-self: end;
+
+}
+
+
+
+#plate__whole-grains {
+	grid-area: whole-grains;
+	background-color: #a68461;	
+}
+
+
+#plate__fruits {
+	grid-area: fruits;
+	background-color: #b50a37;
+}
+
+#plate__protein {
+	grid-row: 2 / 4; 
+	grid-column: 2 / 3;
+	background-color: #e87d1d;
+
+}
+
+/*food recommendations text boxes (items)*/
+
+
+#box--healthy-oils {
+	grid-row: 2 / 3;
+	grid-column: 1 / 2 ;
+	border-right: 5px solid #E0CC47;
+	border-left: 5px solid #E0CC47;
+}
+
+#box--drinking-water {
+	grid-row: 2 / 3;
+	grid-column: 3 / 4;
+	border-right: 5px solid #3B6A9B;
+	border-left: 5px solid #3B6A9B; 
+}
+
+#box--veggies {
+	grid-row: 4 / 5;
+	grid-column: 1 / 2;
+	border-right: 5px solid #3AB54A;
+	border-left: 5px solid #3AB54A;
+	padding: 5px;
+	 
+}
+
+#box--whole-grains {
+	grid-row: 4 / 5;
+	grid-column: 3 / 4;
+	border-right: 5px solid #a68461;
+	border-left: 5px solid #a68461;
+}
+
+#box--fruits {
+	grid-row: 7 / 8;
+	grid-column: 1 /2;
+	border-right: 5px solid #b50a37;
+	border-left: 5px solid #b50a37;
+}
+
+#box--protein {
+	grid-row: 7 / 8;
+	grid-column: 3 / 4;
+	border-left: 5px solid #e87d1d; 
+	border-right: 5px solid #e87d1d;
+	padding: 5px;
+}
+
+
+footer {
+	
+	width: 200px;
+	margin: 5% auto 1% auto;
+}
+
+a {
+	color: black;
+}
+
+
+ /*------------------------------------------Start of Media Queries---------------------------*/
+
+	@media screen and (max-width: 1400px) {
+		
+		#heading--whole-grains {
+		height: auto;
+	}
+		
+		#box--veggies {
+	margin-top: 40px;
+}
+	}
+
+@media screen and (min-width: 750px) and (max-width: 1400px) {
+	
+	#content__plate--inner-container {
+
+	grid-template-columns: 300px 300px;
+	grid-template-rows: 300px 70px 212px;	
+		
+	}
+	
+	#heading--whole-grains {
+		height: auto;
+	}
+
+}
+
+
+@media screen and (max-width: 1200px) {
+	
+	#content__container {
+		display: flex; 
+		flex-direction: column;
+		margin-top: 10%;
+	}
+	
+	#content__plate--inner-container {
+		
+		margin: 0 auto 0 auto;
+		
+	}
+	
+	div[id^="box--"] {      
+		/*styles Harvard recommendations once they turn flex*/
+		
+		max-width: 275px;
+		margin: 0 auto 5vmax auto;
+		}
+	
+		
+		p {
+			
+		font-size: 22px;
+		line-height: 150%;
+	}  
+	
+
+}
+
+
+@media screen and (max-width: 800px) {
+	
+	#content__plate--inner-container {
+	grid-template-rows: 170px 40px 125px;
+	grid-template-columns: 170px 170px;
+	grid-gap: 5px;
+	}
+	
+	#heading--fruits {
+		
+		padding: 10px 25px 0 100px;
+		width: auto; height: auto;
+	}
+	
+	#heading--whole-grains {
+
+		padding-bottom: 20px;
+		padding-left: 20px;
+		width: auto; height: auto;
+	}
+	
+	#heading--protein {
+		
+		padding-top: 30px;
+		padding-left: 20px;
+		width: auto; height: auto;
+	}
+	
+	#heading--vegetables {
+		
+		width: auto; height: auto;
+		margin-right: 10px;
+		margin-bottom: 20px;
+		maragin-right: 5px;
+	
+	}
+}
+
+@media screen and (max-width: 390px) {
+	
+	#content__plate--inner-container {
+		
+	grid-template-rows: 100px 23.52px 71.48px;
+	grid-template-columns: 100px 100px;
+	grid-gap: 5px;
+		
+	}
+	
+	h2 {
+		font-size: 100%;
+	}
+
+	#heading--vegetables {
+		
+		height: auto;
+		padding: 0 0 20px 115px;
+		
+	}
+	
+	#heading--whole-grains {
+		
+		padding: 0 0 20px 20px;
+	}
+	
+	#heading--protein {
+		
+		padding: 20px 0 0 20px;
+	}
+	
+	#heading--fruits {
+		
+		padding: 10px 10px 0 140px;
+	}
+}
+
+
+
+} /*end of supports grid*/
+
+
+
+
+
+
+
+
+
+
+
